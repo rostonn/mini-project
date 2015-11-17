@@ -1,10 +1,78 @@
 $(function() {
 
-  console.log('Sanity Check');
 
-  function draw() {
-    var canvas = document.getElementById('canvas'),
-      height = canvas.height,
+  console.log('Sanity Check');
+  var canvas = $('#canvas')[0];
+  // function clickElements(){
+  //   canvas.
+  // }
+
+
+  $('#canvas').click(function (e) { //Default mouse Position
+      var posX = $(this).offset().left,
+          posY = $(this).offset().top;
+      var x = e.pageX - posX,
+          y = e.pageY - posY;
+          console.log('x ='+x);
+          console.log('y ='+y);
+
+        //  Select Left Square
+          // Inlet
+          var inletX = boxX+20,
+          side = 12.5,
+          h = Math.sqrt(Math.pow(side, 2) - Math.pow(side / 2, 2)),
+          inletY = boxY - h;
+          console.log(h);
+          //InletBox
+          var iBoxL = 50;
+              iBoxX = inletX-100-iBoxL,
+              iBoxY = inletY-50 - iBoxL/2;
+          // ctx.rect(iBoxX,iBoxY,iBoxL,iBoxL);
+          // ctx.stroke();
+          console.log(iBoxY+' = iBoxY');
+        //Vessel Properties
+        if(x  > iBoxX && x < iBoxX+iBoxL && y > 68 && y < 118 ){
+          console.log('You Clicked the Box');
+          psvBoxClear(psvX,psvY,ctx);
+          centerBoxClear(xStart,yStart,ctx);
+          inletBoxRed(boxX,boxY,ctx);
+
+          $('.vessel-properties').css("display","none");
+          $('.psv-properties').css("display","none");
+          $('.fluid-properties').css("display","block");
+        }
+        if(x > 278 && x<528 && y>153 && y<253){
+          psvBoxClear(psvX,psvY,ctx);
+          inletBoxRedClear(boxX,boxY,ctx);
+          centerBoxFill(xStart,yStart,ctx);
+
+          $('.psv-properties').css("display","none");
+          $('.fluid-properties').css("display","none");
+          $('.vessel-properties').css("display","block");
+        }
+        if(x < 574 && x>490 && y>27 && y<120){
+          inletBoxRedClear(boxX,boxY,ctx);
+          centerBoxClear(xStart,yStart,ctx);
+          psvBOX(psvX,psvY,ctx);
+
+          $('.fluid-properties').css("display","none");
+          $('.vessel-properties').css("display","none");
+          $('.psv-properties').css("display","block");
+        }
+
+        // && x < iBoxX+iBoxL && y > iBoxY && y < iBoxY+iBoxL
+        })
+
+
+
+        //
+
+
+
+
+
+
+    var height = canvas.height,
       width = canvas.width,
       //Center Starting Position
       xStart = width / 2,
@@ -20,6 +88,8 @@ $(function() {
 
       tank(boxX,boxY,boxWidth,boxHeight,ctx);
 
+      outlet(boxX,boxY,boxWidth,boxHeight,ctx);
+      inlet(boxX,boxY,ctx);
 
       // //PSV
       var psvX = boxX + boxWidth;
@@ -31,8 +101,7 @@ $(function() {
       psvBOX(psvX,psvY,ctx);
       psvBoxClear(psvX,psvY,ctx);
 
-      outlet(boxX,boxY,boxWidth,boxHeight,ctx);
-      inlet(boxX,boxY,ctx);
+
 
       inletBoxRed(boxX,boxY,ctx);
       inletBoxRedClear(boxX,boxY,ctx);
@@ -40,14 +109,8 @@ $(function() {
       centerBoxFill(xStart,yStart,ctx);
       centerBoxClear(xStart,yStart,ctx);
 
-      //InletBox
-
-      // ctx.clearRect(xStart - iBx/2-1,yStart-iBx/2-1,iBx+2,iBx+2);
-
-      //Create PSV Box
-
     }
-  }
+
 
   function tank(boxX,boxY,boxWidth,boxHeight,ctx){
         //Rectangle
@@ -232,8 +295,8 @@ function inlet(boxX,boxY,ctx){
 //Inlet
 var inletX = boxX+20,
     side = 12.5,
-    height = Math.sqrt(Math.pow(side, 2) - Math.pow(side / 2, 2)),
-    inletY = boxY - height;
+    h = Math.sqrt(Math.pow(side, 2) - Math.pow(side / 2, 2)),
+    inletY = boxY - h;
 triangle(inletX,inletY,side,'down',ctx);
 ctx.fillStyle = "black";
 ctx.fill();
@@ -291,7 +354,7 @@ var iBx = iBoxL - 10;
 ctx.clearRect(xStart - iBx/2-1,yStart-iBx/2-1,iBx+2,iBx+2);
 }
 
-  draw();
+
 
 
 

@@ -4,11 +4,226 @@
 <head>
   <meta charset="UTF-8">
   <title>Process Safety Valve</title>
+  <link rel="stylesheet" href="./psvstyle.css" media="screen" title="no title" charset="utf-8">
 </head>
 
 <body>
 
   <canvas style="border:2px solid red" id="canvas" width="800" height="400"></canvas>
+  <br>
+
+  <div class="fluid-properties">
+    <form action="/my-handling-form-page" method="post">
+      <h1>Fluid Properties</h1>
+      <div class="block">
+        <table>
+          <tr>
+            <th>Property</th>
+            <th>Value</th>
+            <th>Units</th>
+          </tr>
+          <tr>
+            <td>
+              <label for="name">Fluid Name:</label>
+            </td>
+            <td>
+              <input type="text" id="name" />
+            </td>
+            <td style="text-align:center">psig</td>
+          </tr>
+          <tr>
+            <td>
+              <label for="name">Fluid Name:</label>
+            </td>
+            <td>
+              <input type="text" id="name" />
+            </td>
+            <td>Nothing</td>
+          </tr>
+          <tr>
+            <td>
+              <label for="temperature">Temperature:</label>
+            </td>
+            <td>
+              <input type="text" id="temperature" />
+            </td>
+            <td>&deg;F</td>
+          </tr>
+          <tr>
+            <td>
+              <label for="temperature">Temperature:</label>
+            </td>
+            <td>
+              <input type="text" id="temperature" />
+            </td>
+            <td>&deg;F</td>
+          </tr>
+        </table>
+      </div>
+      <div class="block">
+        <table>
+          <tr>
+            <th>Property</th>
+            <th>Value</th>
+            <th>Units</th>
+          </tr>
+          <tr>
+            <td>
+              <label for="name">Fluid Name:</label>
+            </td>
+            <td>
+              <input type="text" id="name" />
+            </td>
+            <td style="text-align:center">psig</td>
+          </tr>
+          <tr>
+            <td>
+              <label for="name">Fluid Name:</label>
+            </td>
+            <td>
+              <input type="text" id="name" />
+            </td>
+            <td>Nothing</td>
+          </tr>
+          <tr>
+            <td>
+              <label for="temperature">Temperature:</label>
+            </td>
+            <td>
+              <input type="text" id="temperature" />
+            </td>
+            <td>&deg;F</td>
+          </tr>
+          <tr>
+            <td>
+              <label for="temperature">Temperature:</label>
+            </td>
+            <td>
+              <input type="text" id="temperature" />
+            </td>
+            <td>&deg;F</td>
+          </tr>
+        </table>
+      </div>
+      <br>
+      <button id="submit" type="submit" name="submitbutton" value="Submit">Save</button>
+    </form>
+  </div>
+
+  <div class="vessel-properties">
+    <form action="/my-handling-form-page" method="post">
+      <h1>Vessel Properties</h1>
+      <div class="block">
+        <table>
+          <tr>
+            <th>Property</th>
+            <th>Value</th>
+            <th>Units</th>
+          </tr>
+          <tr>
+            <td>
+              <label for="name">Vessel Name:</label>
+            </td>
+            <td>
+              <input type="text" id="name" />
+            </td>
+            <td style="text-align:center"></td>
+          </tr>
+          <tr>
+            <td>
+              <label for="diameter">Vessel Diameter:</label>
+            </td>
+            <td>
+              <input type="text" id="diameter" />
+            </td>
+            <td>ft</td>
+          </tr>
+          <tr>
+            <td>
+              <label for="length">length:</label>
+            </td>
+            <td>
+              <input type="text" id="length" />
+            </td>
+            <td>ft</td>
+          </tr>
+          <tr>
+            <td>
+              <label for="temperature">Temperature:</label>
+            </td>
+            <td>
+              <input type="text" id="temperature" />
+            </td>
+            <td>&deg;F</td>
+          </tr>
+        </table>
+      </div>
+      <br>
+      <button id="submit" type="submit" name="submitbutton" value="Submit">Save</button>
+    </form>
+  </div>
+
+  <div class="psv-properties">
+    <form action="/my-handling-form-page" method="post">
+      <h1>PSV Properties</h1>
+      <div class="block">
+        <table>
+          <tr>
+            <th>Property</th>
+            <th>Value</th>
+            <th>Units</th>
+          </tr>
+          <tr>
+            <td>
+              <label for="psv-tag">PSV Tag:</label>
+            </td>
+            <td>
+              <input type="text" id="psv-tag" />
+            </td>
+            <td style="text-align:center"></td>
+          </tr>
+          <tr>
+            <td>
+              <label for="kd">Kd</label>
+            </td>
+            <td>
+              <input type="text" id="kd" />
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              <label for="kb">Kb</label>
+            </td>
+            <td>
+              <input type="text" id="kb" />
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              <label for="kc">Kc:</label>
+            </td>
+            <td>
+              <input type="text" id="kc" />
+            </td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>
+              <label for="spring">Spring Properties:</label>
+            </td>
+            <td>
+              <input type="text" id="spring" />
+            </td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+      <br>
+      <button id="submit" type="submit" name="submitbutton" value="Submit">Save</button>
+    </form>
+  </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="./canvas.js"></script>

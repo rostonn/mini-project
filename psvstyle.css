@@ -1,0 +1,16 @@
+.block{
+  display: inline-block;
+  border: 2px solid red;
+}
+
+.fluid-properties{
+  display: none;
+}
+
+.vessel-properties{
+  display: none;
+}
+
+.psv-properties{
+  display:none;
+}
