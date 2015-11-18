@@ -14,3 +14,12 @@
 .psv-properties{
   display:none;
 }
+
+.canvas-container{
+  position:relative;
+}
+#calculate-output{
+  position:absolute;
+  bottom: 5px;
+  right: 90px;
+}
