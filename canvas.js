@@ -11,52 +11,78 @@ $(function() {
   // }
 
   //Store Fluid Properties in an Object
-
+  //Sets the span to show and input to hide
   $('#fluid-properties').submit(function(event) {
-    fluidProperties.fluidName = $('#fluidName').val();
-    fluidProperties.atmosphericPressure = $('#atmosphericPressure').val();
-    fluidProperties.normalOperatingPressure = $('#normalOperatingPressure').val();
-    fluidProperties.zFactor = $('#zFactor').val();
-    fluidProperties.viscosity = $('#viscosity').val();
-    fluidProperties.specificGravity = $('#specificGravity').val();
-    fluidProperties.cpCv = $('#cpCv').val();
-    console.log('FLUID PROPERTIES:');
-    for (i in fluidProperties) {
-      console.log('key: ' + i + '   value: ' + fluidProperties[i]);
-    }
-    //Hide The Input Field
-    $('#fluidName').css("display", "none");
-    $('#SfluidName').css("display", "block")
-      .text(fluidProperties.fluidName);
+      fluidProperties.fluidName = $('#fluidName').val();
+      fluidProperties.atmosphericPressure = $('#atmosphericPressure').val();
+      fluidProperties.normalOperatingPressure = $('#normalOperatingPressure').val();
+      fluidProperties.zFactor = $('#zFactor').val();
+      fluidProperties.viscosity = $('#viscosity').val();
+      fluidProperties.specificGravity = $('#specificGravity').val();
+      fluidProperties.cpCv = $('#cpCv').val();
+      console.log('FLUID PROPERTIES:');
+      for (i in fluidProperties) {
+        console.log('key: ' + i + '   value: ' + fluidProperties[i]);
+      }
+      //Hide The Input Field
+      $('#fluidName').css("display", "none");
+      $('#SfluidName').css("display", "block")
+        .text(fluidProperties.fluidName);
 
-    $('#atmosphericPressure').css("display", "none");
-    $('#SatmosphericPressure').css("display", "block")
-      .text(fluidProperties.atmosphericPressure);
+      $('#atmosphericPressure').css("display", "none");
+      $('#SatmosphericPressure').css("display", "block")
+        .text(fluidProperties.atmosphericPressure);
 
-    $('#normalOperatingPressure').css("display", "none");
-    $('#SnormalOperatingPressure').css("display", "block")
-      .text(fluidProperties.normalOperatingPressure);
+      $('#normalOperatingPressure').css("display", "none");
+      $('#SnormalOperatingPressure').css("display", "block")
+        .text(fluidProperties.normalOperatingPressure);
 
-    $('#zFactor').css("display", "none");
-    $('#SzFactor').css("display", "block")
-      .text(fluidProperties.zFactor);
+      $('#zFactor').css("display", "none");
+      $('#SzFactor').css("display", "block")
+        .text(fluidProperties.zFactor);
 
-    $('#viscosity').css("display", "none");
-    $('#Sviscosity').css("display", "block")
-      .text(fluidProperties.viscosity);
+      $('#viscosity').css("display", "none");
+      $('#Sviscosity').css("display", "block")
+        .text(fluidProperties.viscosity);
 
-    $('#specificGravity').css("display", "none");
-    $('#SspecificGravity').css("display", "block")
-      .text(fluidProperties.specificGravity);
+      $('#specificGravity').css("display", "none");
+      $('#SspecificGravity').css("display", "block")
+        .text(fluidProperties.specificGravity);
 
-    $('#cpCv').css("display", "none");
-    $('#ScpCv').css("display", "block")
-      .text(fluidProperties.cpCv);
+      $('#cpCv').css("display", "none");
+      $('#ScpCv').css("display", "block")
+        .text(fluidProperties.cpCv);
+
+      event.preventDefault();
+    })
+    //Edit Fluid Properties
+  $('#fluidEdit').on("click", function() {
+    $('#SfluidName').css("display", "none");
+    $('#fluidName').css("display", "block");
+
+    $('#SatmosphericPressure').css("display", "none");
+    $('#atmosphericPressure').css("display", "block");
+
+    $('#SnormalOperatingPressure').css("display", "none");
+    $('#normalOperatingPressure').css("display", "block");
+
+    $('#SzFactor').css("display", "none");
+    $('#zFactor').css("display", "block");
+
+    $('#Sviscosity').css("display", "none");
+    $('#viscosity').css("display", "block");
+
+    $('#SspecificGravity').css("display", "none");
+    $('#specificGravity').css("display", "block");
+
+    $('#ScpCv').css("display", "none");
+    $('#cpCv').css("display", "block");
 
     event.preventDefault();
   })
 
-
+  //PSV Properties Submit - Sets the PSV Properties Object
+  //Sets The Span to show and the input to hide
   $('#psv-properties').submit(function(event) {
     psvProperties = {
       psvTag: $('#psvTag').val(),
@@ -97,6 +123,30 @@ $(function() {
     event.preventDefault();
   })
 
+  //Edit PSV Properties
+  $('#psvEdit').on("click", function() {
+    $('#SpsvTag').css("display", "none");
+    $('#psvTag').css("display", "block");
+
+
+    $('#SsetPressure').css("display", "none");
+    $('#setPressure').css("display", "block");
+
+
+    $('#Sk').css("display", "none");
+    $('#k').css("display", "block");
+
+    $('#SkW').css("display", "none");
+    $('#kW').css("display", "block");
+
+    $('#SkP').css("display", "none");
+    $('#kP').css("display", "block");
+
+    $('#SkV').css("display", "none");
+    $('#kV').css("display", "block");
+
+    event.preventDefault();
+  })
   $('#vessel-properties').submit(function(event) {
     vesselProperties = {
       vesselName: $('#vesselName').val(),
@@ -126,9 +176,29 @@ $(function() {
     $('#SvesselLength').css("display", "block")
       .text(vesselProperties.vesselLength);
 
-      $('#normalLiquidLevel').css("display", "none");
-      $('#SnormalLiquidLevel').css("display", "block")
-        .text(vesselProperties.normalLiquidLevel);
+    $('#normalLiquidLevel').css("display", "none");
+    $('#SnormalLiquidLevel').css("display", "block")
+      .text(vesselProperties.normalLiquidLevel);
+    event.preventDefault();
+  })
+
+  //Edit Vessel Properties
+  $('#vesselEdit').on('click', function() {
+    $('#SvesselName').css("display", "none");
+    $('#vesselName').css("display", "block");
+
+    $('#SvesselOrientation').css("display", "none");
+    $('#vesselOrientation').css("display", "block");
+
+    $('#SvesselDiameter').css("display", "none");
+    $('#vesselDiameter').css("display", "block");
+
+    $('#SvesselLength').css("display", "none");
+    $('#vesselLength').css("display", "block");
+
+    $('#SnormalLiquidLevel').css("display", "none");
+    $('#normalLiquidLevel').css("display", "block");
+
     event.preventDefault();
   })
 
