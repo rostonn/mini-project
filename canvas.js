@@ -3,9 +3,64 @@ $(function() {
 
   console.log('Sanity Check');
   var canvas = $('#canvas')[0];
+  var psvProperties = {};
+  var fluidProperties = {};
+  var vesselProperties = {};
   // function clickElements(){
   //   canvas.
   // }
+
+//Store Fluid Properties in an Object
+
+$('#fluid-properties').submit(function(event){
+  fluidProperties.fluidName = $('#fluidName').val();
+  fluidProperties.atmosphericPressure = $('#atmosphericPressure').val();
+  fluidProperties.normalOperatingPressure = $('#normalOperatingPressure').val();
+  fluidProperties.zFactor = $('#zFactor').val();
+  fluidProperties.viscosity = $('#viscosity').val();
+  fluidProperties.specificGravity = $('#specificGravity').val();
+  fluidProperties.cpCv = $('#cpCv').val();
+  console.log('FLUID PROPERTIES:');
+  for(i in fluidProperties){
+    console.log('key: '+i+'   value: '+fluidProperties[i]);
+  }
+  event.preventDefault();
+})
+
+
+$('#psv-properties').submit(function(event){
+  psvProperties = {
+      psvTag: $('#psvTag').val(),
+      setPressure: $('#setPressure').val(),
+      k: $('#k').val(),
+      kW: $('#kW').val(),
+      kP: $('#kP').val(),
+      kV: $('#kV').val()
+  };
+  for(i in psvProperties){
+    console.log('key: '+i+'    Value: '+psvProperties[i]);
+  }
+  // console.log(psvProperties.psvTag);
+  event.preventDefault();
+})
+
+$('#vessel-properties').submit(function(event){
+  vesselProperties = {
+    vesselName: $('#vesselName').val(),
+    vesselOrientation: $('#vesselOrientation').val(),
+    vesselDiameter: $('#vesselDiameter').val(),
+    vesselLength: $('#vesselLength').val()
+  };
+
+  for(i in vesselProperties){
+    console.log('key: '+i+'   Value: '+vesselProperties[i]);
+  }
+  event.preventDefault();
+})
+
+
+
+
 
 
   $('#canvas').click(function (e) { //Default mouse Position
