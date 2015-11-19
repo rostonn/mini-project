@@ -4,6 +4,8 @@ $(function() {
     // console.log('Sanity Check');
     // console.log(text);
     // console.log(text.name);
+    var name = JSON.stringify(text.name);
+    localStorage.setItem('commit',name);
     $('.title').append('<h1>'+text.name+' Commit History</h1>');
   })
 
@@ -24,4 +26,6 @@ $(function() {
       j++;
     }
 })
+
+$('body').append(localStorage.getItem('commit'));
 })
