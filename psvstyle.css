@@ -15,6 +15,10 @@
   display:none;
 }
 
+.output{
+  display: none;
+}
+
 .canvas-container{
   position:relative;
 }

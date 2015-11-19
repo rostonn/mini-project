@@ -38,8 +38,39 @@ $(function() {
     inletBoxRedClear(boxX, boxY, ctx);
     centerBoxClear(xStart, yStart, ctx);
     psvBoxClear(psvX, psvY, ctx);
+    //Display Output
+    $('.output').css("display",'block');
 
-    //
+
+    //Select orifice size:
+    var psvSize = [
+      {negFour: 0.049},
+      {D: 0.11},
+      {E: 0.196},
+      {F: 0.307},
+      {G: 0.503},
+      {H: 0.785},
+      {J: 1.287},
+      {K: 1.838},
+      {L: 2.853},
+      {M: 3.60},
+      {N: 4.34},
+      {P: 6.38},
+      {Q: 11.05},
+      {R: 16.00},
+      {T: 26.00}
+    ]
+    orificeSize = 2;
+    //Append Output to the Output
+    $('#answer').text('The calculated orifice size is '+orificeSize);
+    for(var i=0; i < psvSize.length; i++){
+      for(key in psvSize[i]){
+        if(orificeSize < psvSize[i][key]){
+          $('#'+key).css("background-color","yellow");
+          return;
+        }
+      }
+    }
   })
 
   //Store Fluid Properties in an Object
@@ -283,15 +314,18 @@ $(function() {
     //Vessel Properties
     if (x > iBoxX && x < iBoxX + iBoxL && y > 68 && y < 118) {
       console.log('You Clicked the Box');
+      $('.output').css("display",'none');
       psvBoxClear(psvX, psvY, ctx);
       centerBoxClear(xStart, yStart, ctx);
       inletBoxRed(boxX, boxY, ctx);
 
+      $('.output').css("display",'none');
       $('.vessel-properties').css("display", "none");
       $('.psv-properties').css("display", "none");
       $('.fluid-properties').css("display", "block");
     }
     if (x > 278 && x < 528 && y > 153 && y < 253) {
+      $('.output').css("display",'none');
       psvBoxClear(psvX, psvY, ctx);
       inletBoxRedClear(boxX, boxY, ctx);
       centerBoxFill(xStart, yStart, ctx);
@@ -301,6 +335,7 @@ $(function() {
       $('.vessel-properties').css("display", "block");
     }
     if (x < 574 && x > 490 && y > 27 && y < 120) {
+      $('.output').css("display",'none');
       inletBoxRedClear(boxX, boxY, ctx);
       centerBoxClear(xStart, yStart, ctx);
       psvBOX(psvX, psvY, ctx);
