@@ -6,9 +6,41 @@ $(function() {
   var psvProperties = {};
   var fluidProperties = {};
   var vesselProperties = {};
+  var output = {};
   // function clickElements(){
   //   canvas.
   // }
+  //Output Function;
+
+  $('#calculate-output').on("click",function(){
+    // console.log('SANITY CLICK CHECK');
+    var SG = fluidProperties.specificGravity,
+        flowRate = fluidProperties.flowRate,
+        k = psvProperties.k,
+        kV = psvProperties.kV,
+        kW = psvProperties.kW,
+        kP = psvProperties.kP,
+        setPressure = psvProperties.setPressure;
+        // console.log(flowRate+'flowRate');
+        // console.log(k+' = k');
+        // console.log(kV+' = kV');
+        // console.log(kW+' = kW');
+        // console.log(kP+' = kP');
+    var orificeSize = flowRate * Math.pow(SG,0.5)/((38*k*kW*kP*kV)*
+    (Math.pow((1+.1)*setPressure - 0),0.5));
+    console.log('Orifice Size = '+orificeSize);
+
+    //Clear The properties
+    $('.fluid-properties').css("display", "none");
+    $('.vessel-properties').css("display", "none");
+    $('.psv-properties').css("display", "none");
+    //Clear The Red Boxes
+    inletBoxRedClear(boxX, boxY, ctx);
+    centerBoxClear(xStart, yStart, ctx);
+    psvBoxClear(psvX, psvY, ctx);
+
+    //
+  })
 
   //Store Fluid Properties in an Object
   //Sets the span to show and input to hide
@@ -20,10 +52,21 @@ $(function() {
       fluidProperties.viscosity = $('#viscosity').val();
       fluidProperties.specificGravity = $('#specificGravity').val();
       fluidProperties.cpCv = $('#cpCv').val();
-      console.log('FLUID PROPERTIES:');
-      for (i in fluidProperties) {
-        console.log('key: ' + i + '   value: ' + fluidProperties[i]);
-      }
+      fluidProperties.flowRate = $('#flowRate').val();
+      //Caclulate c
+      var k = fluidProperties.cpCv;
+      console.log('k = '+k);
+      var c = 520*Math.sqrt(k + Math.pow((2/(k+1)),((k+1)/(k-1))));
+      console.log(c);
+      c = c.toPrecision(3);
+      //Insert C
+      $('#kRatio').css("display","");
+      $('#c').text(c);
+
+      // console.log('FLUID PROPERTIES:');
+      // for (i in fluidProperties) {
+      //   console.log('key: ' + i + '   value: ' + fluidProperties[i]);
+      // }
       //Hide The Input Field
       $('#fluidName').css("display", "none");
       $('#SfluidName').css("display", "block")
@@ -53,6 +96,10 @@ $(function() {
       $('#ScpCv').css("display", "block")
         .text(fluidProperties.cpCv);
 
+      $('#flowRate').css("display","none");
+      $('#SflowRate').css("display", "block")
+        .text(fluidProperties.flowRate);
+
       event.preventDefault();
     })
     //Edit Fluid Properties
@@ -77,6 +124,11 @@ $(function() {
 
     $('#ScpCv').css("display", "none");
     $('#cpCv').css("display", "block");
+
+    $('#kRatio').css("display","none");
+
+    $('#SflowRate').css("display","none");
+    $('#flowRate').css("display", "block");
 
     event.preventDefault();
   })
@@ -132,7 +184,6 @@ $(function() {
     $('#SsetPressure').css("display", "none");
     $('#setPressure').css("display", "block");
 
-
     $('#Sk').css("display", "none");
     $('#k').css("display", "block");
 
@@ -157,7 +208,7 @@ $(function() {
     };
 
     for (i in vesselProperties) {
-      console.log('key: ' + i + '   Value: ' + vesselProperties[i]);
+      // console.log('key: ' + i + '   Value: ' + vesselProperties[i]);
     }
 
     $('#vesselName').css("display", "none");

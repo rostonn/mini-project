@@ -65,6 +65,16 @@
             </td>
             <td></td>
           </tr>
+          <tr>
+            <td>
+              <label for="flowRate">Flow Rate:</label>
+            </td>
+            <td>
+              <input type="text" id="flowRate" />
+              <span id="SflowRate" style="display:none; text-align:center;"></span>
+            </td>
+            <td>gpm</td>
+          </tr>
         </table>
       </div>
       <div class="block">
@@ -101,6 +111,15 @@
             <td>
               <input type="text" id="cpCv" />
               <span id="ScpCv" style="display:none; text-align:center;"></span>
+            </td>
+            <td></td>
+          </tr>
+          <tr id="kRatio" style="display:none;">
+            <td>
+              <label for="c">c (Calculated Coefficient):</label>
+            </td>
+            <td>
+              <span id="c" style="text-align:center;"></span>
             </td>
             <td></td>
           </tr>
@@ -261,6 +280,74 @@
     </form>
   </div>
 
+  <div class="output">
+      <table class="block">
+        <tr id='negFour'>
+            <td>0.049</td>
+            <td>-4</td>
+        </tr>
+        <tr id='D'>
+            <td>0.11</td>
+            <td>D</td>
+        </tr>
+        <tr id='E'>
+          <td>0.196</td>
+          <td>E</td>
+        </tr>
+        <tr id='F'>
+          <td>0.307</td>
+          <td>F</td>
+        </tr>
+        <tr id='G'>
+          <td>0.503</td>
+          <td>G</td>
+        </tr>
+      </table>
+      <table class="block">
+        <tr>
+          <td>0.785</td>
+          <td>H</td>
+        </tr>
+        <tr>
+          <td>1.287</td>
+          <td>J</td>
+        </tr>
+        <tr>
+          <td>1.838</td>
+          <td>K</td>
+        </tr>
+        <tr>
+          <td>2.853</td>
+          <td>L</td>
+        </tr>
+        <tr>
+          <td>3.60</td>
+          <td>M</td>
+        </tr>
+      </table>
+      <table class="block">
+        <tr>
+          <td>4.34</td>
+          <td>N</td>
+        </tr>
+        <tr>
+          <td>6.38</td>
+          <td>P</td>
+        </tr>
+        <tr>
+          <td>11.05</td>
+          <td>Q</td>
+        </tr>
+        <tr>
+          <td>16.00</td>
+          <td>R</td>
+        </tr>
+        <tr>
+          <td>26.00</td>
+          <td>T</td>
+        </tr>
+      </table>
+  </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="./canvas.js"></script>
 </body>
