@@ -12,7 +12,20 @@ $(function() {
   // }
   //Output Function;
 
+  function errorChecking(object){
+    for(i in object){
+      if(!object[i]){
+        alert('Error'+i+' is empty');
+        return false;
+      }
+    }
+    return true;
+  }
+
   $('#calculate-output').on("click",function(){
+    if(!(errorChecking(fluidProperties))){
+      return;
+    }
     // console.log('SANITY CLICK CHECK');
     var SG = fluidProperties.specificGravity,
         flowRate = fluidProperties.flowRate,
