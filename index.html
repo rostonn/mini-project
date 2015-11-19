@@ -4,21 +4,31 @@
 <head>
   <meta charset="UTF-8">
   <title>Process Safety Valve</title>
+  <link rel="stylesheet" href="./bootstrap/css/bootstrap.css" media="screen" title="no title" charset="utf-8">
   <link rel="stylesheet" href="./psvstyle.css" media="screen" title="no title" charset="utf-8">
 </head>
 
 <body>
-<div class="canvas-container">
-  <canvas style="border:2px solid red" id="canvas" width="800" height="400"></canvas>
-  <button id="calculate-output" type="button" name="CALCULATE OUTPUT">CALCULATE OUTPUT</button>
+<div class="container pull-left">
+
+
+  <div class="canvas-container">
+
+  <canvas id="canvas" width="800" height="400"></canvas>
+  <div class="button-container">
+  <button id="calculate-output" class="btn btn-default" type="button" name="CALCULATE OUTPUT">CALCULATE OUTPUT</button>
+  <a id="commit-history" class="btn btn-default" href="./commitHistory.html">COMMIT HISTORY</a>
+  </div>
 </div>
-  <br>
+
 
   <div class="fluid-properties">
     <form id="fluid-properties">
       <h1>Fluid Properties</h1>
-      <div class="block">
-        <table>
+
+        <div class="row">
+          <div class="col-md-6">
+        <table class="table table-bordered">
           <tr>
             <th>Property</th>
             <th>Value</th>
@@ -76,9 +86,10 @@
             <td>gpm</td>
           </tr>
         </table>
+      <!-- col-md-6 -->
       </div>
-      <div class="block">
-        <table>
+      <div class="col-md-6">
+        <table class="table table-bordered">
           <tr>
             <th>Property</th>
             <th>Value</th>
@@ -124,18 +135,30 @@
             <td></td>
           </tr>
         </table>
+
+      <!-- Col-md-6 -->
+    </div>
+      <!-- Row -->
       </div>
-      <br>
-      <button id="submit" type="submit" name="submitbutton" value="Submit">Save</button>
-      <button id="fluidEdit" type="button" name="fluidEdit" value="Edit">Edit</button>
+      <div class="row">
+
+      <button id="submit" class="btn btn-default" type="submit" name="submitbutton" value="Submit">Save</button>
+      <button id="fluidEdit" class="btn btn-default" type="button" name="fluidEdit" value="Edit">Edit</button>
+
+        </div>
+
+        <!-- Container -->
+        <!-- FLUID PROPERTIES -->
     </form>
   </div>
 
   <div class="vessel-properties">
+
     <form id="vessel-properties">
       <h1>Vessel Properties</h1>
-      <div class="block">
-        <table>
+      <div class="row">
+        <div class="col-md-6">
+        <table class="table table-striped">
           <tr>
             <th>Property</th>
             <th>Value</th>
@@ -156,7 +179,7 @@
               <label for="vesselOrientation">Vessel Orientation:</label>
             </td>
             <td>
-              <select name="vesselOrientation" id="vesselOrientation">
+              <select name="vesselOrientation" class="form-control" id="vesselOrientation">
                 <option value="horizontal">Horizontal</option>
                 <option value="vertical">Vertical</option>
               </select>
@@ -196,17 +219,20 @@
           </tr>
         </table>
       </div>
-      <br>
-      <button id="submit" type="submit" name="submitbutton" value="Submit">Save</button>
-      <button id="vesselEdit" type="button" name="fluidEdit" value="Edit">Edit</button>
+      </div>
+      <div class="row">
+      <button id="submit" type="submit" class="btn btn-default" name="submitbutton" value="Submit">Save</button>
+      <button id="vesselEdit" type="button" class="btn btn-default" name="fluidEdit" value="Edit">Edit</button>
+        </div>
     </form>
   </div>
 
   <div class="psv-properties">
     <form id="psv-properties">
       <h1>PSV Properties</h1>
-      <div class="block">
-        <table>
+      <div class="row">
+        <div class="col-md-6">
+        <table class="table table-striped">
           <tr>
             <th>Property</th>
             <th>Value</th>
@@ -273,16 +299,22 @@
             <td></td>
           </tr>
         </table>
+        </div>
       </div>
-      <br>
-      <button id="submit" type="submit" name="submitbutton" value="Submit">Save</button>
-      <button id="psvEdit" type="button" name="psvEdit" value="Edit">Edit</button>
+      <div class="row">
+      <button id="submit" class="btn btn-default" type="submit" name="submitbutton" value="Submit">Save</button>
+      <button id="psvEdit" class="btn btn-default" type="button" name="psvEdit" value="Edit">Edit</button>
+      </div>
     </form>
   </div>
 
+
+
   <div class="output">
-    <h2>Valve Size:</h2>
-      <table class="block">
+    <h1>Valve Size:</h1>
+    <div class="row">
+      <div class="col-md-4">
+      <table class="table table-striped">
         <tr>
           <td><h3>Size (in<sup>2</sup>)</h3></td>
           <td><h3>Name</h3></td>
@@ -308,7 +340,9 @@
           <td>G</td>
         </tr>
       </table>
-      <table class="block">
+      </div>
+      <div class="col-md-4">
+      <table class="table table-striped">
         <tr>
           <td><h3>Size (in<sup>2</sup>)</h3></td>
           <td><h3>Name</h3></td>
@@ -334,7 +368,9 @@
           <td>M</td>
         </tr>
       </table>
-      <table class="block">
+      </div>
+      <div class="col-md-4">
+      <table class="table table-bordered">
         <tr>
           <td><h3>Size (in<sup>2</sup>)</h3></td>
           <td><h3>Name</h3></td>
@@ -360,10 +396,14 @@
           <td>T</td>
         </tr>
       </table>
+      </div>
+      </div>
       <h2 id="answer"></h2>
   </div>
-  <a href="./commitHistory.html">Commit History</a>
+</div>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="./bootstrap/js/bootstrap.js"></script>
   <script src="./canvas.js"></script>
 </body>
 

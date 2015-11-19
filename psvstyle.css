@@ -22,8 +22,15 @@
 .canvas-container{
   position:relative;
 }
-#calculate-output{
+.button-container{
   position:absolute;
-  bottom: 5px;
-  right: 90px;
+  bottom: 10px;
+  left: 10px;
+}
+
+#calculate-output{
+  display: inline-block;
+}
+#commit-history{
+  display: inline-block;
 }
