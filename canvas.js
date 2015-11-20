@@ -15,7 +15,7 @@ $(function() {
   function errorChecking(object){
     for(i in object){
       if(!object[i]){
-        alert('Error'+i+' is empty');
+        alert('Error '+i+' is empty');
         return false;
       }
     }
@@ -73,7 +73,7 @@ $(function() {
       {R: 16.00},
       {T: 26.00}
     ]
-    orificeSize = 2;
+    orificeSize = fluidProperties.fluidName;
     //Append Output to the Output
     $('#answer').text('The calculated orifice size is '+orificeSize);
     for(var i=0; i < psvSize.length; i++){
